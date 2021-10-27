@@ -77,34 +77,8 @@ rem ----------------------------------------------------------------------
 dispatcher.executeDispatch(document, ".uno:DeleteRows", "", 0, Array())
 
 rem ----------------------------------------------------------------------
-dim oFilterField2(3) As New com.sun.star.sheet.TableFilterField
-
-oSheet = thisComponent.Sheets.getByName("Sheet1") 
-oRange = oSheet.getCellRangeByName("A1:A100")
-
-oFilter= oRange.createFilterDescriptor(true)
-'oRange.filter(oFilter)' 
-
-with oFilter									
-	.ContainsHeader = true						
-	.CopyOutputData = false						
-	.IsCaseSensitive = false				
-	.UseRegularExpressions = false
-end with
-
-oFilterField2(0).Field = 1
-oFilterField2(0).Operator = com.sun.star.sheet.FilterOperator2.DOES_NOT_CONTAIN
-oFilterField2(0).StringValue = ""
-oFilterField2(1).Connection = com.sun.star.sheet.FilterConnection.OR
-oFilterField2(1).Field = 1
-oFilterField2(1).Operator = com.sun.star.sheet.FilterOperator2.DOES_NOT_CONTAIN
-oFilterField2(1).StringValue = "Department"
-oFilterField2(2).Connection = com.sun.star.sheet.FilterConnection.OR
-oFilterField2(2).Field = 1
-oFilterField2(2).Operator = com.sun.star.sheet.FilterOperator2.DOES_NOT_CONTAIN
-oFilterField2(2).StringValue = " "
-			
-oFilter.setFilterFields(oFilterField2())
-oRange.filter(oFilter)
+oSheet = ThisComponent.getSheets().getByIndex(0)
+oFilterDesc = oSheet.createFilterDescriptor(True)
+oSheet.filter(oFilterDesc)
 
 end sub
