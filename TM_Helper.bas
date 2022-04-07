@@ -37,8 +37,7 @@ dispatcher.executeDispatch(document, ".uno:TextToColumns", "", 0, Array())
 
 rem ----------------------------------------------------------------------
 dim oFilterField(3) As New com.sun.star.sheet.TableFilterField   
-
-oSheet = thisComponent.Sheets.getByName("Sheet1") 
+ 
 oRange = oSheet.getCellRangeByName("A1:A250")
 
 oFilter= oRange.createFilterDescriptor(true)
@@ -69,15 +68,13 @@ rem ----------------------------------------------------------------------
 dispatcher.executeDispatch(document, ".uno:DeleteRows", "", 0, Array())
 
 rem ----------------------------------------------------------------------
-oSheet = ThisComponent.getSheets().getByIndex(0)
 oFilterDesc = oSheet.createFilterDescriptor(True)
 oSheet.filter(oFilterDesc)
 
 rem ----------------------------------------------------------------------
 dim oFilterField2(3) As New com.sun.star.sheet.TableFilterField   
-
-oSheet2 = thisComponent.Sheets.getByName("Sheet1") 
-oRange2 = oSheet2.getCellRangeByName("A1:A250")
+ 
+oRange2 = oSheet.getCellRangeByName("A1:A250")
 
 oFilter2= oRange2.createFilterDescriptor(true)
 'oRange.filter(oFilter)' 
@@ -107,19 +104,16 @@ rem ----------------------------------------------------------------------
 dispatcher.executeDispatch(document, ".uno:DeleteRows", "", 0, Array())
 
 rem ----------------------------------------------------------------------
-oSheet = ThisComponent.getSheets().getByIndex(0)
 oFilterDesc = oSheet.createFilterDescriptor(True)
 oSheet.filter(oFilterDesc)
 
 rem ----------------------------------------------------------------------
-Dim oSheet3
 Dim oRange3
 Dim oSortFields(0) as new com.sun.star.util.SortField
 Dim oSortDesc(0) as new com.sun.star.beans.PropertyValue
-oSheet3 = ThisComponent.Sheets(0)
 
 REM Set the range on which to sort
-oRange3 = oSheet3.getCellRangeByName("A2:Z250")
+oRange3 = oSheet.getCellRangeByName("A2:Z250")
 
 REM Sort by the Average grade field in the range in descending order
 oSortFields(0).Field = 0
